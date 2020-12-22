@@ -19,6 +19,31 @@
 #include "FingerprintInscreen.h"
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
+#include <hardware_legacy/power.h>
+
+#include <cmath>
+/*
+ * Copyright (C) 2019 The LineageOS Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#define LOG_TAG "FingerprintInscreenService"
+
+#include "FingerprintInscreen.h"
+
+#include <android-base/logging.h>
 #include <hardware_legacy/power.h>
 #include <cmath>
 #include <fstream>
@@ -116,6 +141,28 @@ Return<void> FingerprintInscreen::onHideFODView() {
 }
 
 Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t vendorCode) {
+    std::lock_guard<std::mutex> _lock(mCallbackLock);
+    if (mCallback == nullptr) {
+        return false;
+    }
+
+    if (acquiredInfo == 6) {
+        if (vendorCode == 22) {
+            Return<void> ret = mCallback->onFingerDown();
+            if (!ret.isOk()) {
+                LOG(ERROR) << "FingerDown() error: " << ret.description();
+            }
+            return true;
+        }
+
+        if (vendorCode == 23) {
+            Return<void> ret = mCallback->onFingerUp();
+            if (!ret.isOk()) {
+                LOG(ERROR) << "FingerUp() error: " << ret.description();
+            }
+            return true;
+        }
+    }
     LOG(ERROR) << "acquiredInfo: " << acquiredInfo << ", vendorCode: " << vendorCode << "\n";
     return false;
 }
@@ -146,7 +193,11 @@ Return<bool> FingerprintInscreen::shouldBoostBrightness() {
     return false;
 }
 
-Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallback>&) {
+Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallback>& callback) {
+   {
+        std::lock_guard<std::mutex> _lock(mCallbackLock);
+        mCallback = callback;
+   }
     return Void();
 }
 
@@ -157,3 +208,4 @@ Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallb
 }  // namespace biometrics
 }  // namespace lineage
 }  // namespace vendor
+
