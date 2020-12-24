@@ -87,7 +87,7 @@ PRODUCT_PACKAGES += \
     lineage.biometrics.fingerprint.inscreen@1.0-service.tucana
 
 PRODUCT_COPY_FILES += \
-   vendor/evolution/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
+   vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
 TARGET_HAS_FOD := true
 
@@ -214,6 +214,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libnl
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
 
 #PRODUCT_BOOT_JARS += \
     WfdCommon

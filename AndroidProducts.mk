@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/evolution_tucana.mk
+    $(LOCAL_DIR)/lineage_tucana.mk
 
 COMMON_LUNCH_CHOICES := \
-    evolution_tucana-user \
-    evolution_tucana-userdebug \
-    evolution_tucana-eng
+    lineage_tucana-user \
+    lineage_tucana-userdebug \
+    lineage_tucana-eng
