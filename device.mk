@@ -60,7 +60,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    GCamGo
+    Snap
     
 # Device-specific settings
 PRODUCT_PACKAGES += \
@@ -87,7 +87,7 @@ PRODUCT_PACKAGES += \
     lineage.biometrics.fingerprint.inscreen@1.0-service.tucana
 
 PRODUCT_COPY_FILES += \
-   vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
+   vendor/evolution/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
 TARGET_HAS_FOD := true
 
@@ -223,5 +223,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
 
-#PRODUCT_BOOT_JARS += \
+PRODUCT_BOOT_JARS += \
     WfdCommon
