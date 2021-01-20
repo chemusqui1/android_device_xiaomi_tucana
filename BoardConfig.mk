@@ -1,5 +1,5 @@
 
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (C) 2020 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -99,16 +99,7 @@ TARGET_USE_QTI_BT_STACK := true
 
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
-
-# Charger Mode
-BOARD_CHARGER_ENABLE_SUSPEND := true
-
-# Dex
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
-  endif
-endif
+TARGET_CAMERA_BOOTTIME_TIMESTAMP := true
 
 # Display
 TARGET_USES_HWC2 := true
@@ -143,12 +134,18 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 134217728
 BOARD_DTBOIMG_PARTITION_SIZE := 33554432
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 57453555712
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4831838208
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BUILD_WITHOUT_VENDOR := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_USES_METADATA_PARTITION := true
+
+# Power
+TARGET_OVERLAYS_POWERHAL := true
+TARGET_USES_NON_LEGACY_POWER := true
+TARGET_USES_INTERACTION_BOOST := true
+TARGET_TAP_TO_WAKE_NODE := "/dev/input/event4"
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
@@ -166,13 +163,33 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
-# RIL
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+# System_As_Root
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true
-include device/qcom/sepolicy/SEPolicy.mk
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
+SELINUX_IGNORE_NEVERALLOWS_ON_USER := true
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR := $(DEVICE_PATH)/sepolicy/private
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
+
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/private \
+    device/qcom/sepolicy/qva/private
+
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/public \
+    device/qcom/sepolicy/generic/public/attribute \
+    device/qcom/sepolicy/qva/public \
+    device/qcom/sepolicy/qva/public/attribute
+
+PRODUCT_PUBLIC_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/generic/product/public \
+    device/qcom/sepolicy/qva/product/public
+
+PRODUCT_PRIVATE_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/generic/product/private \
+    device/qcom/sepolicy/qva/product/private
+
 
 # Power
 TARGET_OVERLAYS_POWERHAL := true
