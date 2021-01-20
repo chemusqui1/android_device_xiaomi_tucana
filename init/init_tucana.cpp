@@ -57,8 +57,9 @@ void vendor_load_properties()
     property_override("org.evolution.build_maintainer", "Chemuski1");
     property_override("org.evolution.build_support_url", "https://t.me/MiNote10Official");
     property_override("ro.oem_unlock_supported", "0");
+    property_override("ro.boot.selinux", "enforcing");
     // fingerprint
     property_override("ro.product.model", "Mi Note 10");
-    property_override("ro.build.description", "redfin-user 11 RQ1A.201205.010 6953398 release-keys");
-    property_override_multi("ro.build.fingerprint", "ro.vendor.build.fingerprint","ro.bootimage.build.fingerprint", "google/redfin/redfin:11/RQ1A.201205.010/6953398:user/release-keys");
+    property_override("ro.build.description", "redfin-user 11 RQ1A.210105.003 7005429 release-keys");
+    property_override_multi("ro.build.fingerprint", "ro.vendor.build.fingerprint","ro.bootimage.build.fingerprint", "google/redfin/redfin:11/RQ1A.210105.003/7005429:user/release-keys");
 }
