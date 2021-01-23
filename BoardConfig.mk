@@ -163,6 +163,9 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
+# RIL
+TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+
 # System_As_Root
 BOARD_SUPPRESS_SECURE_ERASE := true
 
@@ -170,31 +173,11 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 SELINUX_IGNORE_NEVERALLOWS := true
 SELINUX_IGNORE_NEVERALLOWS_ON_USER := true
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR := $(DEVICE_PATH)/sepolicy/private
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
-
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    device/qcom/sepolicy/generic/private \
-    device/qcom/sepolicy/qva/private
-
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
-    device/qcom/sepolicy/generic/public \
-    device/qcom/sepolicy/generic/public/attribute \
-    device/qcom/sepolicy/qva/public \
-    device/qcom/sepolicy/qva/public/attribute
-
-PRODUCT_PUBLIC_SEPOLICY_DIRS += \
-    device/qcom/sepolicy/generic/product/public \
-    device/qcom/sepolicy/qva/product/public
-
-PRODUCT_PRIVATE_SEPOLICY_DIRS += \
-    device/qcom/sepolicy/generic/product/private \
-    device/qcom/sepolicy/qva/product/private
 
 
 # Power
 TARGET_OVERLAYS_POWERHAL := true
 TARGET_USES_NON_LEGACY_POWER := true
-TARGET_USES_INTERACTION_BOOST := true
 TARGET_TAP_TO_WAKE_NODE := "/dev/input/event4"
 
 # Treble

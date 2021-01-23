@@ -17,6 +17,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.enableNCSService=TRUE \
     persist.vendor.camera.enableTOFInterface=TRUE \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
+    camera.disable_zsl_mode=1
 
 # CNE and DPM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -24,6 +25,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.dpm.feature=1 \
     persist.vendor.dpm.loglevel=0 \
     persist.vendor.dpm.nsrm.bkg.evt=3955
+    
+# DALVIK
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapsize=36m \
+    dev.pm.dyn_samplingrate=1
 
 # Data Modules
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -44,14 +50,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.xiaomi.bl.poll=true \
     persist.displayfeature.dc_backlight.threshold=610 \
     persist.displayfeature.dc_backlight.enable=false \
-    persist.fod.modified.dc_status=false \
+    persist.fod.modified.dc_status=true \
     sys.displayfeature.hbm.enable=true
+    
+# FP
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fingerprint.cleanup.unused=false
+    
+# Gboard
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.ime.kb_pad_port_b=1
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_backpressure=1 \
     debug.sf.latch_unsignaled=1 \
-    debug.sf.enable_hwc_vds=1
+    debug.sf.enable_hwc_vds=1 \
+    debug.cpurend.vsync=false
+    
+# IOP
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.iop.enable_prefetch_ofr=0 \
+    vendor.iop.enable_uxe=0
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -87,10 +107,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.redir_party_num=1 \
     persist.vendor.radio.report_codec=1 \
     telephony.lteOnCdmaDevice=1
-
+    
 # RCS
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rcs.supported=0
+    persist.rcs.supported=1
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -99,11 +119,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Subsystem ramdump
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ssr.restart_level=ALL_ENABLE
+    
+# SurfaceFlinger
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
+    ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
+    ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
+
+# USB debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
+    
+# Use Vulkan backend for Skia UI rendering
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.hwui.renderer=skiavk
 
 # Vendor
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.va_aosp.support=1
-
+    ro.vendor.qti.va_aosp.support=1 
+    
 # Zygote
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.device_config.runtime_native.usap_pool_enabled=true
