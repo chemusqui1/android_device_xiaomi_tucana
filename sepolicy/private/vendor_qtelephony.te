@@ -1,3 +1,0 @@
-allow vendor_qtelephony hal_atfwd_hwservice:hwservice_manager find;
-allow vendor_qtelephony hal_perf_default:binder call;
-allow vendor_qtelephony hal_perf_hwservice:hwservice_manager find;
