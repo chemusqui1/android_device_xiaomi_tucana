@@ -53,6 +53,9 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/xiaomi/tucana-firmware
+
 # Screen density
 TARGET_SCREEN_DENSITY := 440
 
