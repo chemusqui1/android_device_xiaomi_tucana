@@ -319,7 +319,11 @@ vendor/etc/sdr_config.cfg
 
 # Fingerprint
 vendor/lib64/hw/fingerprint.goodix_fod.so:vendor/lib64/hw/fingerprint.goodix_fod.sm6150.so
+vendor/lib64/hw/fingerprint.fpc_fod.so:vendor/lib64/hw/fingerprint.fpc_fod.sm6150.so
 vendor/lib64/libgf_hal.so
+
+# Fingerprint firmware
+vendor/firmware/gtx8_limits_f4.csv
 
 # Graphics firmware
 vendor/firmware/a615_zap.b00
