@@ -1,13 +1,13 @@
 #
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2021 The Pixel Experience Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_toco.mk
+    $(LOCAL_DIR)/aosp_tucana.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_toco-user \
-    lineage_toco-userdebug \
-    lineage_toco-eng
+    aosp_tucana-user \
+    aosp_tucana-userdebug \
+    aosp_tucana-eng
