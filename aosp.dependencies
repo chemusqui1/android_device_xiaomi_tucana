@@ -1,0 +1,26 @@
+[
+    {
+        "remote":       "github",
+        "repository":   "chemusqui1/android_device_xiaomi_sm6150-common",
+        "target_path":  "device/xiaomi/sm6150-common",
+        "revision":     "eleven"
+    },
+    {
+        "remote":       "github",
+        "repository":   "chemusqui1/android_kernel_xiaomi_sm6150",
+        "target_path":  "kernel/xiaomi/sm6150",
+        "revision":     "ReBorn-stable"
+    }
+    {
+        "remote":       "gitlab",
+        "repository":   "jmportos/tucana-firmware",
+        "target_path":  "device/xiaomi/tucana-firmware",
+        "revision":     "main"
+    }
+    {
+        "remote":       "gitlab",
+        "repository":   "jmportos/proprietary_vendor_xiaomi",
+        "target_path":  "vendor/xiaomi",
+        "revision":     "master"
+    }
+]
