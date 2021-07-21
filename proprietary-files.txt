@@ -426,6 +426,9 @@ vendor/etc/thermal-tgame.conf
 vendor/etc/thermald-devices.conf
 vendor/lib64/libthermalclient.so
 
+# Touchscreen firmware
+vendor/firmware/stm_fts_production_limits.csv
+
 # Vibrator firmware
 vendor/firmware/drv2604.bin
 
