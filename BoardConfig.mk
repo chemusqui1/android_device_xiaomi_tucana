@@ -9,7 +9,7 @@ BUILD_BROKEN_DUP_RULES := true
 # Inherit from sm6150-common
 include device/xiaomi/sm6150-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/xiaomi/toco
+DEVICE_PATH := device/xiaomi/tucana
 
 # Audio
 TARGET_PROVIDES_AUDIO_EXTNS := true
@@ -22,7 +22,7 @@ TARGET_USES_FOD_ZPOS := true
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/manifest.xml
 
 # Kernel
-TARGET_KERNEL_CONFIG := toco_defconfig
+TARGET_KERNEL_CONFIG := tucana_defconfig
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
