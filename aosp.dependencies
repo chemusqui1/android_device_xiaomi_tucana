@@ -7,8 +7,14 @@
     },
     {
         "remote":       "github",
-        "repository":   "chemusqui1/android_kernel_xiaomi_sm6150",
+        "repository":   "chemusqui1/android_kernel_xiaomi_tucana",
         "target_path":  "kernel/xiaomi/sm6150",
+        "revision":     "ReBorn-stable"
+    }
+    {
+        "remote":       "github",
+        "repository":   "chemusqui1/android_kernel_xiaomi_tucana-firmware",
+        "target_path":  "kernel/xiaomi/tucana-headers",
         "revision":     "ReBorn-stable"
     }
     {
